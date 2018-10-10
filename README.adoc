@@ -1,0 +1,10 @@
+= Dotfiles
+
+Inspired on 
+- https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet
+- https://github.com/mathiasbynens/dotfiles 
+- https://github.com/holman/dotfiles
+
+I prefered a fast terminal to a pretty one. 
+Before I had `oh-my-zsh` and many plugins that make load time very slow.
+No this time. :)
