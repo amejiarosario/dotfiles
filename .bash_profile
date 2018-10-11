@@ -6,4 +6,8 @@ echo '.bash_profile'
 for file in ~/.{aliases,path,extra,exports}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
+
+for file in ~/.{bashrc,}; do
+	[ -f "$file" ] && source "$file";
+done;
 unset file;
