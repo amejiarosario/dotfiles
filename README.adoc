@@ -8,3 +8,7 @@ Inspired on
 I prefered a fast terminal to a pretty one. 
 Before I had `oh-my-zsh` and many plugins that make load time very slow.
 No this time. :)
+
+== Nice replacements
+
+- change `less`/`more`/`cat` for `bat`[https://github.com/sharkdp/bat]
