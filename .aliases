@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+echo '.aliases' 
+
+alias dotfiles='cd ~/dotfiles'
+alias as='echo "~/dotfiles/apply.sh && source ~/.bash_profile"; ~/dotfiles/apply.sh && source ~/.bash_profile'
+
 #
 # more options https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
 #
@@ -24,6 +29,7 @@ alias l="ls -lF ${colorflag}"
 
 # List all files colorized in long format, excluding . and ..
 alias la="ls -lAF ${colorflag}"
+alias ll="ls -lAF ${colorflag}"
 
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
@@ -42,9 +48,43 @@ alias egrep='egrep --color=auto'
 #
 
 alias gco='git checkout'
+alias gcb='git checkout -b'
+
 alias gst='git status'
+
 alias glg='git log --stat'
 alias glgp='git log --stat -p'
+
 alias gaa='git add --all'
+
+alias gc='git commit'
 alias gca='git commit -v -a'
 alias gca!='git commit -v -a --amend'
+
+
+alias gd='git diff'
+alias gdca='git diff --cached'
+
+alias ggpush='git push origin $(git_current_branch)'
+alias ggpull='git pull origin $(git_current_branch)'
+
+
+
+#
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/git.zsh
+#
+
+# Outputs the name of the current branch
+# Usage example: git pull origin $(git_current_branch)
+# Using '--quiet' with 'symbolic-ref' will not cause a fatal error (128) if
+# it's not a symbolic ref, but in a Git repo.
+function git_current_branch() {
+  local ref
+  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
