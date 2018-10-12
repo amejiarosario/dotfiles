@@ -40,4 +40,4 @@ fi;
 unset doIt;
 unset checkDiff;
 
-# cd -
+cd -
