@@ -5,6 +5,12 @@ echo $(pwd);
 
 git pull origin master;
 
+function checkDiff() {
+	for dotfile in $(ls -A | egrep '^\.' | grep -v ".DS_Store"); do
+		[ -f "$HOME/$dotfile" ] && git diff "$dotfile" "$HOME/$dotfile";
+	done;
+}
+
 function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".DS_Store" \
@@ -17,15 +23,21 @@ function doIt() {
 		-avh --no-perms . ~;
 }
 
-# if [ "$1" == "--force" -o "$1" == "-f" ]; then
+if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	doIt;
-# else
-# 	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-# 	echo "";
-# 	if [[ $REPLY =~ ^[Yy]$ ]]; then
-# 		doIt;
-# 	fi;
-# fi;
-unset doIt;
+else
+	checkDiff
+	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
+	echo "";
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		doIt;
+		echo "Changes applied!";
+	else
+		echo "Changes NOT applied.";
+	fi;
+fi;
 
-cd -
+unset doIt;
+unset checkDiff;
+
+# cd -
