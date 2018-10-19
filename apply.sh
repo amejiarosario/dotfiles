@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-cd ~/dotfiles/;
+export DOTFILES_PATH="$HOME/dotfiles";
+export PRIVATE_DOTFILES_PATH="$HOME/private-dotfiles";
+
 echo $(pwd);
 
 git pull origin master;
 
 function checkDiff() {
 	for dotfile in $(ls -A | egrep '^\.' | grep -v ".DS_Store"); do
-		[ -f "$HOME/$dotfile" ] && git diff "$dotfile" "$HOME/$dotfile";
+		[ -f "$HOME/$dotfile" ] && git diff "$DOTFILES_PATH/$dotfile" "$HOME/$dotfile";
 	done;
 }
 
@@ -41,3 +43,4 @@ unset doIt;
 unset checkDiff;
 
 cd -
+echo $(pwd);

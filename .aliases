@@ -2,7 +2,7 @@
 
 echo '.aliases' 
 
-alias dotfiles='cd ~/dotfiles'
+alias dotfiles='code ~/dotfiles'
 alias as='echo "~/dotfiles/apply.sh && source ~/.bash_profile"; ~/dotfiles/apply.sh && source ~/.bash_profile'
 
 #

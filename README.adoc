@@ -4,6 +4,7 @@ Inspired on
 - https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet
 - https://github.com/mathiasbynens/dotfiles 
 - https://github.com/holman/dotfiles
+- https://dev.to/aspittel/set-up-my-computer-with-me-5bee
 
 I prefered a fast terminal to a pretty one. 
 Before I had `oh-my-zsh` and many plugins that make load time very slow.
@@ -11,4 +12,19 @@ No this time. :)
 
 == Nice replacements
 
+- OSX ships with an old version of Bash that does not support the \e escape character. Use \x1B or update Bash (`brew install bash`).
 - change `less`/`more`/`cat` for `bat`[https://github.com/sharkdp/bat]
+
+== TODO
+
+- Replace NVM for https://github.com/asdf-vm/asdf
+- Use a Brewfile - https://github.com/Homebrew/homebrew-bundle
+- Automatically push on commit: https://stackoverflow.com/a/7925891/684957
+
+== Programming language version managers
+
+Some version managers are very slow loading like:
+- https://github.com/creationix/nvm
+- https://github.com/tj/n
+
+- https://github.com/asdf-vm/asdf
