@@ -1,12 +1,12 @@
 = Dotfiles
 
-Inspired on 
+Inspired on
 - https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet
-- https://github.com/mathiasbynens/dotfiles 
+- https://github.com/mathiasbynens/dotfiles
 - https://github.com/holman/dotfiles
 - https://dev.to/aspittel/set-up-my-computer-with-me-5bee
 
-I prefered a fast terminal to a pretty one. 
+I prefered a fast terminal to a pretty one.
 Before I had `oh-my-zsh` and many plugins that make load time very slow.
 No this time. :)
 
@@ -20,6 +20,10 @@ No this time. :)
 - Replace NVM for https://github.com/asdf-vm/asdf
 - Use a Brewfile - https://github.com/Homebrew/homebrew-bundle
 - Automatically push on commit: https://stackoverflow.com/a/7925891/684957
+
+Other directories
+- Fonts ~/Library/Fonts
+- VSCode Snippets ~/Library/Application\ Support/Code/User/snippets/
 
 == Programming language version managers
 
