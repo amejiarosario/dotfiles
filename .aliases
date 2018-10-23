@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo '.aliases' 
+echo '.aliases'
 
 alias dotfiles='code ~/dotfiles'
 alias as='echo "~/dotfiles/apply.sh && source ~/.bash_profile"; ~/dotfiles/apply.sh && source ~/.bash_profile'
@@ -88,3 +88,7 @@ function git_current_branch() {
   fi
   echo ${ref#refs/heads/}
 }
+
+# for debugging
+export DOTFILE_LAST_UPDATED=$(date +"%Y-%m-%d T %H:%M:%SZ")
+alias dotfileLast='echo "dotfiles updated on: $DOTFILE_LAST_UPDATED"'

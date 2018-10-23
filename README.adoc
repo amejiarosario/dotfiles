@@ -7,7 +7,7 @@ Inspired on
 - https://dev.to/aspittel/set-up-my-computer-with-me-5bee
 
 I prefered a fast terminal to a pretty one.
-Before I had `oh-my-zsh` and many plugins that make load time very slow.
+Before I had `oh-my-zsh`, `nvm`, `avm` and many plugins that make load time very slow.
 No this time. :)
 
 == Nice replacements

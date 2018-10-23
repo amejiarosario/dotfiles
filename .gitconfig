@@ -2,7 +2,9 @@
 	email = me@adrianmejia.com
 	name = Adrian Mejia
 [core]
-	editor = vim
+	editor = code --wait
+	# editor = vim
+	excludesfile = ~/.gitignore-global
 
 [color]
 

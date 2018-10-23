@@ -3,44 +3,50 @@
 export DOTFILES_PATH="$HOME/dotfiles";
 export PRIVATE_DOTFILES_PATH="$HOME/private-dotfiles";
 
-echo $(pwd);
+# echo $(pwd);
 
-git pull origin master;
+function updateRepo() {
+  cd $DOTFILES_PATH
+  git pull origin master;
+  cd -
+}
 
 function checkDiff() {
-	for dotfile in $(ls -A | egrep '^\.' | grep -v ".DS_Store"); do
-		[ -f "$HOME/$dotfile" ] && git diff "$DOTFILES_PATH/$dotfile" "$HOME/$dotfile";
-	done;
+  for dotfile in $(ls -A $DOTFILES_PATH | egrep '^\.' | grep -v ".DS_Store"); do
+    [ -f "$HOME/$dotfile" ] && git diff --stat "$HOME/$dotfile" "$DOTFILES_PATH/$dotfile";
+    [ -f "$HOME/$dotfile" ] && git diff --minimal "$HOME/$dotfile" "$DOTFILES_PATH/$dotfile";
+  done;
 }
 
 function doIt() {
-	rsync --exclude ".git/" \
-		--exclude ".DS_Store" \
-		--exclude ".osx" \
-		--exclude "bootstrap.sh" \
-		--exclude "apply.sh" \
-		--exclude "README.md" \
-		--exclude "README.adoc" \
-		--exclude "LICENSE-MIT.txt" \
-		-avh --no-perms . ~;
+  rsync --exclude ".git/" \
+    --exclude ".DS_Store" \
+    --exclude ".osx" \
+    --exclude ".gitignore" \
+    --exclude "bootstrap.sh" \
+    --exclude "apply.sh" \
+    --exclude "README.md" \
+    --exclude "README.adoc" \
+    --exclude "LICENSE-MIT.txt" \
+    -avh --no-perms $DOTFILES_PATH/ $HOME;
 }
 
+updateRepo;
+
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	doIt;
+  doIt;
 else
-	checkDiff
-	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-	echo "";
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		doIt;
-		echo "Changes applied!";
-	else
-		echo "Changes NOT applied.";
-	fi;
+  checkDiff;
+
+  read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
+  echo "";
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    doIt;
+    echo "Changes applied!";
+  else
+    echo "Changes NOT applied.";
+  fi;
 fi;
 
 unset doIt;
 unset checkDiff;
-
-cd -
-echo $(pwd);
